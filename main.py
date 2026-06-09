@@ -177,7 +177,27 @@ def get_loads():
     conn = sqlite3.connect("mini_tms.db")
     c = conn.cursor()
 
-    c.execute("SELECT * FROM loads")
+    c.execute("""
+    SELECT
+
+        load.load_number,
+
+        cust.name AS customer_name,
+
+        carr.name AS carrier_name,
+
+        load.status
+
+    FROM loads load
+
+    LEFT JOIN customers cust
+        ON load.customer_id = cust.id
+
+    LEFT JOIN carriers carr
+        ON load.carrier_id = carr.id
+
+    ORDER BY load.load_number
+    """)
 
     loads = c.fetchall()
 
@@ -194,16 +214,47 @@ def get_load(load_number: str):
     c = conn.cursor()
 
     c.execute("""
-    SELECT *
-    FROM loads
-    WHERE load_number = ?
+    SELECT
+
+        load.load_number,
+
+        cust.name AS customer_name,
+
+        carr.name AS carrier_name,
+
+        usr.first_name || ' ' || usr.last_name AS created_by,
+
+        load.pu_address,
+        load.pu_city,
+        load.pu_state,
+        load.pu_zip,
+
+        load.del_address,
+        load.del_city,
+        load.del_state,
+        load.del_zip,
+
+        load.status
+
+    FROM loads load
+
+    LEFT JOIN customers cust
+        ON load.customer_id = cust.id
+
+    LEFT JOIN carriers carr
+        ON load.carrier_id = carr.id
+
+    LEFT JOIN users usr
+        ON load.created_by_user_id = usr.id
+
+    WHERE load.load_number = ?
     """, (load_number,))
 
-    load = c.fetchone()
+    load_record = c.fetchone()
 
     conn.close()
 
-    return load
+    return load_record
 
 #ADD NEW LOAD
 
