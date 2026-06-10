@@ -134,9 +134,31 @@ td {
 }
 
 pre {
-    background-color: #f4f6f9;
+    background-color: #0d1117;
+    color: #63c387;
     padding: 15px;
     border-radius: 6px;
     overflow-x: auto;
     max-height: 600px;
+
+    font-family: Consolas, Monaco, monospace;
+    border: 1px solid #30363d;
+}
+
+#endpoint-select {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    margin-right: 10px;
+}
+
+.terminal-header {
+    background-color: #161b22;
+    color: #f8fafc;
+    padding: 10px 15px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border: 1px solid #30363d;
+    border-bottom: none;
+    font-size: 14px;
 }
