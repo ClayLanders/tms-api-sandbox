@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Explorer</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="sidebar">
+
+        <h1>Mini TMS</h1>
+
+        <ul>
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="loads.html">Loads</a></li>
+            <li><a href="customers.html">Customers</a></li>
+            <li><a href="carriers.html">Carriers</a></li>
+            <li><a href="users.html">Users</a></li>
+            <li><a href="api-explorer.html" class="active-link">API Explorer</a></li>
+        </ul>
+
+    </div>
+
+    <div class="main-content">
+
+        <h1 class="page-title">API Explorer</h1>
+
+        <div class="table-container">
+
+            <label for="endpoint-select">
+                Endpoint
+            </label>
+
+            <br><br>
+
+            <select id="endpoint-select">
+
+                <option value="/loads">
+                    GET /loads
+                </option>
+
+                <option value="/customers">
+                    GET /customers
+                </option>
+
+                <option value="/carriers">
+                    GET /carriers
+                </option>
+
+                <option value="/users">
+                    GET /users
+                </option>
+
+            </select>
+
+            <button
+                class="btn"
+                onclick="runEndpoint()"
+            >
+                Execute
+            </button>
+
+            <br><br>
+
+            <pre id="api-response">
+
+Select an endpoint and click Execute.
+
+            </pre>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/api-explorer.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loads</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="sidebar">
+
+        <h1>Mini TMS</h1>
+
+        <ul>
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="loads.html" class="active-link">Loads</a></li>
+            <li><a href="customers.html">Customers</a></li>
+            <li><a href="carriers.html">Carriers</a></li>
+            <li><a href="users.html">Users</a></li>
+            <li><a href="api-explorer.html">API Explorer</a></li>
+        </ul>
+
+    </div>
+
+    <div class="main-content">
+
+        <h1 class="page-title">Loads</h1>
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Load #</th>
+                        <th>Customer</th>
+                        <th>Carrier</th>
+                        <th>Pickup</th>
+                        <th>Delivery</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody id="loads-table-body">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/loads.js"></script>
+
+</body>
+</html>
