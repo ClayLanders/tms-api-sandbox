@@ -1,4 +1,4 @@
-# Mini TMS
+# TMS API Sandbox
 
 A lightweight Transportation Management System (TMS) built to learn and demonstrate database design, API development, frontend integration, and logistics workflows.
 
