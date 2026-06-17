@@ -95,6 +95,65 @@ def create_customer(customer: dict):
 
     return {"message": "Customer created successfully"}
 
+# UPDATE CUSTOMER
+
+@app.patch("/customers/{customer_id}")
+def update_customer(customer_id: int, updates: dict):
+
+    conn = sqlite3.connect("mini_tms.db")
+    c = conn.cursor()
+
+    protected_fields = ["id"]
+
+    updates = {
+        k: v
+        for k, v in updates.items()
+        if k not in protected_fields
+    }
+
+    if not updates:
+        conn.close()
+        return {"message": "No valid fields supplied"}
+
+    fields = []
+
+    for key in updates.keys():
+        fields.append(f"{key} = ?")
+
+    sql = f"""
+    UPDATE customers
+    SET {", ".join(fields)}
+    WHERE id = ?
+    """
+
+    values = list(updates.values())
+    values.append(customer_id)
+
+    c.execute(sql, values)
+
+    conn.commit()
+    conn.close()
+
+    return {"message": "Customer updated successfully"}
+
+#DELETE CUSTOMER
+
+@app.delete("/customers/{customer_id}")
+def delete_customer(customer_id: int):
+
+    conn = sqlite3.connect("mini_tms.db")
+    c = conn.cursor()
+
+    c.execute("""
+    DELETE FROM customers
+    WHERE id = ?
+    """, (customer_id,))
+
+    conn.commit()
+    conn.close()
+
+    return {"message": "Customer deleted successfully"}
+
 # ------------------------
 # CARRIERS
 # ------------------------
@@ -172,6 +231,65 @@ def create_carrier(carrier: dict):
     conn.close()
 
     return {"message": "Carrier created successfully"}
+
+#UPDATE CARRIER
+
+@app.patch("/carriers/{carrier_id}")
+def update_carrier(carrier_id: int, updates: dict):
+
+    conn = sqlite3.connect("mini_tms.db")
+    c = conn.cursor()
+
+    protected_fields = ["id"]
+
+    updates = {
+        k: v
+        for k, v in updates.items()
+        if k not in protected_fields
+    }
+
+    if not updates:
+        conn.close()
+        return {"message": "No valid fields supplied"}
+
+    fields = []
+
+    for key in updates.keys():
+        fields.append(f"{key} = ?")
+
+    sql = f"""
+    UPDATE carriers
+    SET {", ".join(fields)}
+    WHERE id = ?
+    """
+
+    values = list(updates.values())
+    values.append(carrier_id)
+
+    c.execute(sql, values)
+
+    conn.commit()
+    conn.close()
+
+    return {"message": "Carrier updated successfully"}
+
+#DELETE CARRIER
+
+@app.delete("/carriers/{carrier_id}")
+def delete_carrier(carrier_id: int):
+
+    conn = sqlite3.connect("mini_tms.db")
+    c = conn.cursor()
+
+    c.execute("""
+    DELETE FROM carriers
+    WHERE id = ?
+    """, (carrier_id,))
+
+    conn.commit()
+    conn.close()
+
+    return {"message": "Carrier deleted successfully"}
 
 # ------------------------
 # LOADS
@@ -363,6 +481,70 @@ def create_load(load: dict):
 
     return {"message": "Load created successfully"}
 
+#UPDATE LOAD
+
+@app.patch("/loads/{load_number}")
+def update_load(load_number: str, updates: dict):
+
+    conn = sqlite3.connect("mini_tms.db")
+    c = conn.cursor()
+
+    protected_fields = [
+        "id",
+        "load_number",
+        "created_at",
+        "updated_at"
+    ]
+
+    updates = {
+        k: v
+        for k, v in updates.items()
+        if k not in protected_fields
+    }
+
+    if not updates:
+        conn.close()
+        return {"message": "No valid fields supplied"}
+
+    fields = []
+
+    for key in updates.keys():
+        fields.append(f"{key} = ?")
+
+    sql = f"""
+    UPDATE loads
+    SET {", ".join(fields)}
+    WHERE load_number = ?
+    """
+
+    values = list(updates.values())
+    values.append(load_number)
+
+    c.execute(sql, values)
+
+    conn.commit()
+    conn.close()
+
+    return {"message": "Load updated successfully"}
+
+#DELETE LOAD
+
+@app.delete("/loads/{load_number}")
+def delete_load(load_number: str):
+
+    conn = sqlite3.connect("mini_tms.db")
+    c = conn.cursor()
+
+    c.execute("""
+    DELETE FROM loads
+    WHERE load_number = ?
+    """, (load_number,))
+
+    conn.commit()
+    conn.close()
+
+    return {"message": "Load deleted successfully"}
+
 # ------------------------
 # USERS
 # ------------------------
@@ -430,3 +612,62 @@ def create_user(user: dict):
     conn.close()
 
     return {"message": "User created successfully"}
+
+#UPDATE USER
+
+@app.patch("/users/{user_id}")
+def update_user(user_id: int, updates: dict):
+
+    conn = sqlite3.connect("mini_tms.db")
+    c = conn.cursor()
+
+    protected_fields = ["id"]
+
+    updates = {
+        k: v
+        for k, v in updates.items()
+        if k not in protected_fields
+    }
+
+    if not updates:
+        conn.close()
+        return {"message": "No valid fields supplied"}
+
+    fields = []
+
+    for key in updates.keys():
+        fields.append(f"{key} = ?")
+
+    sql = f"""
+    UPDATE users
+    SET {", ".join(fields)}
+    WHERE id = ?
+    """
+
+    values = list(updates.values())
+    values.append(user_id)
+
+    c.execute(sql, values)
+
+    conn.commit()
+    conn.close()
+
+    return {"message": "User updated successfully"}
+
+#DELETE USER
+
+@app.delete("/users/{user_id}")
+def delete_user(user_id: int):
+
+    conn = sqlite3.connect("mini_tms.db")
+    c = conn.cursor()
+
+    c.execute("""
+    DELETE FROM users
+    WHERE id = ?
+    """, (user_id,))
+
+    conn.commit()
+    conn.close()
+
+    return {"message": "User deleted successfully"}
