@@ -607,6 +607,110 @@ def create_load(
     conn = sqlite3.connect("mini_tms.db")
     c = conn.cursor()
 
+        # Verify load number is unique
+
+    c.execute("""
+    SELECT load_number
+    FROM loads
+    WHERE load_number = ?
+    """, (load["load_number"],))
+
+    existing_load = c.fetchone()
+
+    if existing_load:
+
+        conn.close()
+
+        return {
+            "message": "Load number already exists"
+        }
+    
+        # Validate status
+
+    if load["status"] not in VALID_STATUSES:
+
+        conn.close()
+
+        return {
+            "message": "Invalid status"
+        }
+    
+        # Validate carrier rate
+
+    if load["carrier_rate"] < 0:
+
+        conn.close()
+
+        return {
+            "message": "Carrier rate cannot be negative"
+        }
+
+    # Validate customer rate
+
+    if load["customer_rate"] < 0:
+
+        conn.close()
+
+        return {
+            "message": "Customer rate cannot be negative"
+        }
+    
+        # Validate customer exists
+
+    c.execute("""
+    SELECT id
+    FROM customers
+    WHERE id = ?
+    """, (load["customer_id"],))
+
+    customer = c.fetchone()
+
+    if not customer:
+
+        conn.close()
+
+        return {
+            "message": "Customer not found"
+        }
+    
+        # Validate carrier exists
+
+    if load["carrier_id"] is not None:
+
+        c.execute("""
+        SELECT id
+        FROM carriers
+        WHERE id = ?
+        """, (load["carrier_id"],))
+
+        carrier = c.fetchone()
+
+        if not carrier:
+
+            conn.close()
+
+            return {
+                "message": "Carrier not found"
+            }
+    
+        # Validate user exists
+
+    c.execute("""
+    SELECT id
+    FROM users
+    WHERE id = ?
+    """, (load["created_by_user_id"],))
+
+    user = c.fetchone()
+
+    if not user:
+
+        conn.close()
+
+        return {
+            "message": "User not found"
+        }
+
     c.execute("""
     INSERT INTO loads (
         load_number,
