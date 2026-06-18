@@ -87,6 +87,16 @@ def create_customer(
     conn = sqlite3.connect("mini_tms.db")
     c = conn.cursor()
 
+        # Validate customer name
+
+    if not customer["name"].strip():
+
+        conn.close()
+
+        return {
+            "message": "Customer name is required"
+        }
+
     c.execute("""
     INSERT INTO customers (
         name,
@@ -290,6 +300,16 @@ def create_carrier(
 
     conn = sqlite3.connect("mini_tms.db")
     c = conn.cursor()
+
+        # Validate carrier name
+
+    if not carrier["name"].strip():
+
+        conn.close()
+
+        return {
+            "message": "Carrier name is required"
+        }
 
     c.execute("""
     INSERT INTO carriers (
@@ -1054,6 +1074,26 @@ def create_user(
 
     conn = sqlite3.connect("mini_tms.db")
     c = conn.cursor()
+
+        # Validate first name
+
+    if not user["first_name"].strip():
+
+        conn.close()
+
+        return {
+            "message": "First name is required"
+        }
+
+    # Validate last name
+
+    if not user["last_name"].strip():
+
+        conn.close()
+
+        return {
+            "message": "Last name is required"
+        }
 
     c.execute("""
     INSERT INTO users (
