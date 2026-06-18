@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Body
 from fastapi.middleware.cors import CORSMiddleware
 import sqlite3
 
@@ -64,7 +64,19 @@ def get_customer(customer_id: int):
 #ADD NEW CUSTOMER
 
 @app.post("/customers")
-def create_customer(customer: dict):
+def create_customer(
+    customer: dict = Body(
+        example={
+            "name": "Customer Name",
+            "email": "email@example.com",
+            "phone": "555-123-4567",
+            "address": "123 Main St",
+            "city": "Charlotte",
+            "state": "NC",
+            "zip_code": "28202"
+        }
+    )
+):
 
     conn = sqlite3.connect("mini_tms.db")
     c = conn.cursor()
@@ -98,7 +110,20 @@ def create_customer(customer: dict):
 # UPDATE CUSTOMER
 
 @app.patch("/customers/{customer_id}")
-def update_customer(customer_id: int, updates: dict):
+def update_customer(
+    customer_id: int,
+    updates: dict = Body(
+        example={
+            "name": "Customer Name",
+            "email": "email@example.com",
+            "phone": "555-123-4567",
+            "address": "123 Main St",
+            "city": "Charlotte",
+            "state": "NC",
+            "zip_code": "28202"
+        }
+    )
+):
 
     conn = sqlite3.connect("mini_tms.db")
     c = conn.cursor()
@@ -197,7 +222,21 @@ def get_carrier(carrier_id: int):
 #ADD NEW CARRIER
 
 @app.post("/carriers")
-def create_carrier(carrier: dict):
+def create_carrier(
+    carrier: dict = Body(
+        example={
+            "name": "Carrier Name",
+            "mc_number": "MC123456",
+            "dot_number": "DOT987654",
+            "email": "dispatch@carrier.com",
+            "phone": "555-123-4567",
+            "address": "456 Carrier Way",
+            "city": "Atlanta",
+            "state": "GA",
+            "zip_code": "30301"
+        }
+    )
+):
 
     conn = sqlite3.connect("mini_tms.db")
     c = conn.cursor()
@@ -235,7 +274,22 @@ def create_carrier(carrier: dict):
 #UPDATE CARRIER
 
 @app.patch("/carriers/{carrier_id}")
-def update_carrier(carrier_id: int, updates: dict):
+def update_carrier(
+    carrier_id: int,
+    updates: dict = Body(
+        example={
+            "name": "Carrier Name",
+            "mc_number": "MC123456",
+            "dot_number": "DOT987654",
+            "email": "dispatch@carrier.com",
+            "phone": "555-123-4567",
+            "address": "456 Carrier Way",
+            "city": "Atlanta",
+            "state": "GA",
+            "zip_code": "30301"
+        }
+    )
+):
 
     conn = sqlite3.connect("mini_tms.db")
     c = conn.cursor()
@@ -420,7 +474,34 @@ def get_load(load_number: str):
 #ADD NEW LOAD
 
 @app.post("/loads")
-def create_load(load: dict):
+def create_load(
+    load: dict = Body(
+        example={
+            "load_number": "L1001",
+            "customer_id": 1,
+            "carrier_id": 1,
+            "created_by_user_id": 1,
+
+            "pu_address": "123 Pickup St",
+            "pu_city": "Charlotte",
+            "pu_state": "NC",
+            "pu_zip": "28202",
+
+            "del_address": "456 Delivery Ave",
+            "del_city": "Atlanta",
+            "del_state": "GA",
+            "del_zip": "30301",
+
+            "pickup_date": "2026-06-20",
+            "delivery_date": "2026-06-21",
+
+            "customer_rate": 2500,
+            "carrier_rate": 1800,
+
+            "status": "Created"
+        }
+    )
+):
 
     conn = sqlite3.connect("mini_tms.db")
     c = conn.cursor()
@@ -484,7 +565,34 @@ def create_load(load: dict):
 #UPDATE LOAD
 
 @app.patch("/loads/{load_number}")
-def update_load(load_number: str, updates: dict):
+def update_load(
+    load_number: str,
+    updates: dict = Body(
+        example={
+            "customer_id": 1,
+            "carrier_id": 1,
+            "created_by_user_id": 1,
+
+            "pu_address": "Pickup Address",
+            "pu_city": "Pickup City",
+            "pu_state": "NC",
+            "pu_zip": "28202",
+
+            "del_address": "Delivery Address",
+            "del_city": "Delivery City",
+            "del_state": "GA",
+            "del_zip": "30301",
+
+            "pickup_date": "2026-06-20",
+            "delivery_date": "2026-06-21",
+
+            "customer_rate": 2500,
+            "carrier_rate": 1800,
+
+            "status": "Created"
+        }
+    )
+):
 
     conn = sqlite3.connect("mini_tms.db")
     c = conn.cursor()
@@ -588,7 +696,16 @@ def get_user(user_id: int):
 #ADD NEW USER
 
 @app.post("/users")
-def create_user(user: dict):
+def create_user(
+    user: dict = Body(
+        example={
+            "first_name": "John",
+            "last_name": "Doe",
+            "email": "john.doe@example.com",
+            "role": "Dispatcher"
+        }
+    )
+):
 
     conn = sqlite3.connect("mini_tms.db")
     c = conn.cursor()
@@ -616,7 +733,17 @@ def create_user(user: dict):
 #UPDATE USER
 
 @app.patch("/users/{user_id}")
-def update_user(user_id: int, updates: dict):
+def update_user(
+    user_id: int,
+    updates: dict = Body(
+        example={
+            "first_name": "John",
+            "last_name": "Doe",
+            "email": "john.doe@example.com",
+            "role": "Dispatcher"
+        }
+    )
+):
 
     conn = sqlite3.connect("mini_tms.db")
     c = conn.cursor()
