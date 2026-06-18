@@ -59,6 +59,12 @@ def get_customer(customer_id: int):
 
     conn.close()
 
+    if not customer:
+
+        return {
+            "message": "Customer not found"
+        }
+
     return customer
 
 #ADD NEW CUSTOMER
@@ -128,6 +134,24 @@ def update_customer(
     conn = sqlite3.connect("mini_tms.db")
     c = conn.cursor()
 
+        # Verify customer exists
+
+    c.execute("""
+    SELECT id
+    FROM customers
+    WHERE id = ?
+    """, (customer_id,))
+
+    existing_customer = c.fetchone()
+
+    if not existing_customer:
+
+        conn.close()
+
+        return {
+            "message": "Customer not found"
+        }
+
     protected_fields = ["id"]
 
     updates = {
@@ -169,6 +193,24 @@ def delete_customer(customer_id: int):
     conn = sqlite3.connect("mini_tms.db")
     c = conn.cursor()
 
+    # Verify customer exists
+
+    c.execute("""
+    SELECT id
+    FROM customers
+    WHERE id = ?
+    """, (customer_id,))
+
+    existing_customer = c.fetchone()
+
+    if not existing_customer:
+
+        conn.close()
+
+        return {
+            "message": "Customer not found"
+        }
+
     c.execute("""
     DELETE FROM customers
     WHERE id = ?
@@ -177,7 +219,9 @@ def delete_customer(customer_id: int):
     conn.commit()
     conn.close()
 
-    return {"message": "Customer deleted successfully"}
+    return {
+        "message": "Customer deleted successfully"
+    }
 
 # ------------------------
 # CARRIERS
@@ -216,6 +260,12 @@ def get_carrier(carrier_id: int):
     carrier = c.fetchone()
 
     conn.close()
+
+    if not carrier:
+
+        return {
+            "message": "Carrier not found"
+        }
 
     return carrier
 
@@ -294,6 +344,24 @@ def update_carrier(
     conn = sqlite3.connect("mini_tms.db")
     c = conn.cursor()
 
+        # Verify carrier exists
+
+    c.execute("""
+    SELECT id
+    FROM carriers
+    WHERE id = ?
+    """, (carrier_id,))
+
+    existing_carrier = c.fetchone()
+
+    if not existing_carrier:
+
+        conn.close()
+
+        return {
+            "message": "Carrier not found"
+        }
+
     protected_fields = ["id"]
 
     updates = {
@@ -335,6 +403,24 @@ def delete_carrier(carrier_id: int):
     conn = sqlite3.connect("mini_tms.db")
     c = conn.cursor()
 
+    # Verify carrier exists
+
+    c.execute("""
+    SELECT id
+    FROM carriers
+    WHERE id = ?
+    """, (carrier_id,))
+
+    existing_carrier = c.fetchone()
+
+    if not existing_carrier:
+
+        conn.close()
+
+        return {
+            "message": "Carrier not found"
+        }
+
     c.execute("""
     DELETE FROM carriers
     WHERE id = ?
@@ -343,11 +429,20 @@ def delete_carrier(carrier_id: int):
     conn.commit()
     conn.close()
 
-    return {"message": "Carrier deleted successfully"}
+    return {
+        "message": "Carrier deleted successfully"
+    }
 
 # ------------------------
 # LOADS
 # ------------------------
+
+VALID_STATUSES = [
+    "Created",
+    "Booked",
+    "In Transit",
+    "Delivered"
+]
 
 #GET ALL LOADS
 
@@ -468,6 +563,12 @@ def get_load(load_number: str):
     load_record = c.fetchone()
 
     conn.close()
+
+    if not load_record:
+
+        return {
+            "message": "Load not found"
+        }
 
     return load_record
 
@@ -597,6 +698,24 @@ def update_load(
     conn = sqlite3.connect("mini_tms.db")
     c = conn.cursor()
 
+    # Verify load exists
+
+    c.execute("""
+    SELECT load_number
+    FROM loads
+    WHERE load_number = ?
+    """, (load_number,))
+
+    existing_load = c.fetchone()
+
+    if not existing_load:
+
+        conn.close()
+
+        return {
+            "message": "Load not found"
+    }
+
     protected_fields = [
         "id",
         "load_number",
@@ -609,6 +728,102 @@ def update_load(
         for k, v in updates.items()
         if k not in protected_fields
     }
+
+        # Validate status
+
+    if "status" in updates:
+
+        if updates["status"] not in VALID_STATUSES:
+
+            conn.close()
+
+            return {
+                "message": "Invalid status"
+            }
+        
+        # Validate carrier rate
+
+    if "carrier_rate" in updates:
+
+        if updates["carrier_rate"] < 0:
+
+            conn.close()
+
+            return {
+                "message": "Carrier rate cannot be negative"
+            }
+
+        # Validate customer rate
+
+    if "customer_rate" in updates:
+
+        if updates["customer_rate"] < 0:
+
+            conn.close()
+
+            return {
+                "message": "Customer rate cannot be negative"
+            }   
+
+        # Validate customer exists
+
+    if "customer_id" in updates:
+
+        c.execute("""
+        SELECT id
+        FROM customers
+        WHERE id = ?
+        """, (updates["customer_id"],))
+
+        customer = c.fetchone()
+
+        if not customer:
+
+            conn.close()
+
+            return {
+                "message": "Customer not found"
+            }
+
+        # Validate carrier exists
+
+    if "carrier_id" in updates and updates["carrier_id"] is not None:
+
+        c.execute("""
+        SELECT id
+        FROM carriers
+        WHERE id = ?
+        """, (updates["carrier_id"],))
+
+        carrier = c.fetchone()
+
+        if not carrier:
+
+            conn.close()
+
+            return {
+                "message": "Carrier not found"
+            }
+
+        # Validate user exists
+
+    if "created_by_user_id" in updates:
+
+        c.execute("""
+        SELECT id
+        FROM users
+        WHERE id = ?
+        """, (updates["created_by_user_id"],))
+
+        user = c.fetchone()
+
+        if not user:
+
+            conn.close()
+
+            return {
+                "message": "User not found"
+            }     
 
     if not updates:
         conn.close()
@@ -643,6 +858,24 @@ def delete_load(load_number: str):
     conn = sqlite3.connect("mini_tms.db")
     c = conn.cursor()
 
+    # Verify load exists
+
+    c.execute("""
+    SELECT load_number
+    FROM loads
+    WHERE load_number = ?
+    """, (load_number,))
+
+    existing_load = c.fetchone()
+
+    if not existing_load:
+
+        conn.close()
+
+        return {
+            "message": "Load not found"
+        }
+
     c.execute("""
     DELETE FROM loads
     WHERE load_number = ?
@@ -651,7 +884,9 @@ def delete_load(load_number: str):
     conn.commit()
     conn.close()
 
-    return {"message": "Load deleted successfully"}
+    return {
+        "message": "Load deleted successfully"
+    }
 
 # ------------------------
 # USERS
@@ -690,6 +925,12 @@ def get_user(user_id: int):
     user = c.fetchone()
 
     conn.close()
+
+    if not user:
+
+        return {
+            "message": "User not found"
+        }
 
     return user
 
@@ -748,6 +989,24 @@ def update_user(
     conn = sqlite3.connect("mini_tms.db")
     c = conn.cursor()
 
+        # Verify user exists
+
+    c.execute("""
+    SELECT id
+    FROM users
+    WHERE id = ?
+    """, (user_id,))
+
+    existing_user = c.fetchone()
+
+    if not existing_user:
+
+        conn.close()
+
+        return {
+            "message": "User not found"
+        }
+
     protected_fields = ["id"]
 
     updates = {
@@ -789,6 +1048,24 @@ def delete_user(user_id: int):
     conn = sqlite3.connect("mini_tms.db")
     c = conn.cursor()
 
+    # Verify user exists
+
+    c.execute("""
+    SELECT id
+    FROM users
+    WHERE id = ?
+    """, (user_id,))
+
+    existing_user = c.fetchone()
+
+    if not existing_user:
+
+        conn.close()
+
+        return {
+            "message": "User not found"
+        }
+
     c.execute("""
     DELETE FROM users
     WHERE id = ?
@@ -797,4 +1074,6 @@ def delete_user(user_id: int):
     conn.commit()
     conn.close()
 
-    return {"message": "User deleted successfully"}
+    return {
+        "message": "User deleted successfully"
+    }
