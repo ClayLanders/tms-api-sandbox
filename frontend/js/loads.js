@@ -1,15 +1,26 @@
+let allLoads = [];
+
 async function loadLoads() {
 
     const response = await fetch(
         `${API_BASE_URL}/loads`
     );
 
-    const loads = await response.json();
+    allLoads =
+        await response.json();
+
+    renderLoads(allLoads);
+
+}
+
+function renderLoads(loads) {
 
     const tableBody =
         document.getElementById(
             "loads-table-body"
         );
+
+    tableBody.innerHTML = "";
 
     loads.forEach(load => {
 
@@ -23,13 +34,14 @@ async function loadLoads() {
             <td>${load[6]}, ${load[7]}</td>
             <td>${load[10]}, ${load[11]}</td>
             <td>${load[17]}</td>
+
             <td>
-    <button
-        onclick="deleteLoad('${load[1]}')"
-    >
-        Delete
-    </button>
-</td>
+                <button
+                    onclick="deleteLoad('${load[1]}')"
+                >
+                    Delete
+                </button>
+            </td>
         `;
 
         tableBody.appendChild(row);
@@ -37,6 +49,68 @@ async function loadLoads() {
     });
 
 }
+
+function searchLoads() {
+
+    const searchValue =
+        document
+            .getElementById(
+                "load-search"
+            )
+            .value
+            .toLowerCase();
+
+    const filteredLoads =
+        allLoads.filter(load =>
+
+            String(load[1])
+                .toLowerCase()
+                .includes(searchValue)
+
+            ||
+
+            String(load[2] ?? "")
+                .toLowerCase()
+                .includes(searchValue)
+
+            ||
+
+            String(load[3] ?? "")
+                .toLowerCase()
+                .includes(searchValue)
+
+            ||
+
+            String(load[7] ?? "")
+                .toLowerCase()
+                .includes(searchValue)
+
+            ||
+
+            String(load[11] ?? "")
+                .toLowerCase()
+                .includes(searchValue)
+
+            ||
+
+            String(load[17] ?? "")
+                .toLowerCase()
+                .includes(searchValue)
+
+        );
+
+    renderLoads(filteredLoads);
+
+}
+
+document
+    .getElementById(
+        "load-search"
+    )
+    .addEventListener(
+        "input",
+        searchLoads
+    );
 
 loadLoads();
 

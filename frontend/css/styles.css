@@ -162,3 +162,24 @@ pre {
     border-bottom: none;
     font-size: 14px;
 }
+
+/* Search Boxes */
+
+input[type="text"] {
+    width: 350px;
+    padding: 10px 14px;
+    margin-bottom: 20px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+
+    font-size: 14px;
+    background-color: white;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #2563eb;
+
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}

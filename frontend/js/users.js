@@ -1,15 +1,26 @@
+let allUsers = [];
+
 async function loadUsers() {
 
     const response = await fetch(
         `${API_BASE_URL}/users`
     );
 
-    const users = await response.json();
+    allUsers =
+        await response.json();
+
+    renderUsers(allUsers);
+
+}
+
+function renderUsers(users) {
 
     const tableBody =
         document.getElementById(
             "users-table-body"
         );
+
+    tableBody.innerHTML = "";
 
     users.forEach(user => {
 
@@ -17,25 +28,75 @@ async function loadUsers() {
             document.createElement("tr");
 
         row.innerHTML = `
-    <td>${user[1]}</td>
-    <td>${user[2]}</td>
-    <td>${user[3]}</td>
-    <td>${user[4]}</td>
+            <td>${user[1]}</td>
+            <td>${user[2]}</td>
+            <td>${user[3]}</td>
+            <td>${user[4]}</td>
 
-    <td>
-        <button
-            onclick="deleteUser(${user[0]})"
-        >
-            Delete
-        </button>
-    </td>
-`;
+            <td>
+                <button
+                    onclick="deleteUser(${user[0]})"
+                >
+                    Delete
+                </button>
+            </td>
+        `;
 
         tableBody.appendChild(row);
 
     });
 
 }
+
+function searchUsers() {
+
+    const searchValue =
+        document
+            .getElementById(
+                "user-search"
+            )
+            .value
+            .toLowerCase();
+
+    const filteredUsers =
+        allUsers.filter(user =>
+
+            user[1]
+                .toLowerCase()
+                .includes(searchValue)
+
+            ||
+
+            user[2]
+                .toLowerCase()
+                .includes(searchValue)
+
+            ||
+
+            user[3]
+                .toLowerCase()
+                .includes(searchValue)
+
+            ||
+
+            user[4]
+                .toLowerCase()
+                .includes(searchValue)
+
+        );
+
+    renderUsers(filteredUsers);
+
+}
+
+document
+    .getElementById(
+        "user-search"
+    )
+    .addEventListener(
+        "input",
+        searchUsers
+    );
 
 loadUsers();
 

@@ -1,15 +1,26 @@
+let allCustomers = [];
+
 async function loadCustomers() {
 
     const response = await fetch(
         `${API_BASE_URL}/customers`
     );
 
-    const customers = await response.json();
+    allCustomers =
+        await response.json();
+
+    renderCustomers(allCustomers);
+
+}
+
+function renderCustomers(customers) {
 
     const tableBody =
         document.getElementById(
             "customers-table-body"
         );
+
+    tableBody.innerHTML = "";
 
     customers.forEach(customer => {
 
@@ -17,26 +28,82 @@ async function loadCustomers() {
             document.createElement("tr");
 
         row.innerHTML = `
-    <td>${customer[1]}</td>
-    <td>${customer[2]}</td>
-    <td>${customer[3]}</td>
-    <td>${customer[5]}</td>
-    <td>${customer[6]}</td>
+            <td>${customer[1]}</td>
+            <td>${customer[2]}</td>
+            <td>${customer[3]}</td>
+            <td>${customer[5]}</td>
+            <td>${customer[6]}</td>
 
-    <td>
-        <button
-            onclick="deleteCustomer(${customer[0]})"
-        >
-            Delete
-        </button>
-    </td>
-`;
+            <td>
+                <button
+                    onclick="deleteCustomer(${customer[0]})"
+                >
+                    Delete
+                </button>
+            </td>
+        `;
 
         tableBody.appendChild(row);
 
     });
 
 }
+
+function searchCustomers() {
+
+    const searchValue =
+        document
+            .getElementById(
+                "customer-search"
+            )
+            .value
+            .toLowerCase();
+
+    const filteredCustomers =
+        allCustomers.filter(customer =>
+
+            customer[1]
+                .toLowerCase()
+                .includes(searchValue)
+
+            ||
+
+            customer[2]
+                .toLowerCase()
+                .includes(searchValue)
+
+            ||
+
+            customer[3]
+                .toLowerCase()
+                .includes(searchValue)
+
+            ||
+
+            customer[5]
+                .toLowerCase()
+                .includes(searchValue)
+
+            ||
+
+            customer[6]
+                .toLowerCase()
+                .includes(searchValue)
+
+        );
+
+    renderCustomers(filteredCustomers);
+
+}
+
+document
+    .getElementById(
+        "customer-search"
+    )
+    .addEventListener(
+        "input",
+        searchCustomers
+    );
 
 loadCustomers();
 
