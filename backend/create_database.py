@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS loads (
     customer_rate REAL,
     carrier_rate REAL,
 
-    status TEXT NOT NULL DEFAULT 'Created',
+    status TEXT NOT NULL DEFAULT 'Open',
 
     created_at TEXT DEFAULT CURRENT_TIMESTAMP,
     updated_at TEXT DEFAULT CURRENT_TIMESTAMP,

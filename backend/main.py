@@ -458,7 +458,7 @@ def delete_carrier(carrier_id: int):
 # ------------------------
 
 VALID_STATUSES = [
-    "Created",
+    "Open",
     "Booked",
     "In Transit",
     "Delivered"
@@ -538,6 +538,10 @@ def get_load(load_number: str):
 
         load.id,
         load.load_number,
+
+        load.customer_id,
+        load.carrier_id,
+        load.created_by_user_id,
 
         cust.name AS customer_name,
 
@@ -619,7 +623,7 @@ def create_load(
             "customer_rate": 2500,
             "carrier_rate": 1800,
 
-            "status": "Created"
+            "status": "Open"
         }
     )
 ):
@@ -814,7 +818,7 @@ def update_load(
             "customer_rate": 2500,
             "carrier_rate": 1800,
 
-            "status": "Created"
+            "status": "Open"
         }
     )
 ):

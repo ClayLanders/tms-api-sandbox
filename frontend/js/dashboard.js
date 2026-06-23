@@ -15,7 +15,7 @@ async function loadDashboard() {
 
         const status = load[17];
 
-        if (status === "Created") {
+        if (status === "Open") {
             openLoads++;
         }
 

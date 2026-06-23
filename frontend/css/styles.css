@@ -183,3 +183,34 @@ input[type="text"]:focus {
 
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
+
+/* Detail Pages */
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.detail-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+}
+
+.detail-card h2 {
+    margin-bottom: 15px;
+}
+
+.detail-card p {
+    margin-bottom: 8px;
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}

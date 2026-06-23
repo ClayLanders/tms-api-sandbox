@@ -28,7 +28,11 @@ function renderLoads(loads) {
             document.createElement("tr");
 
         row.innerHTML = `
-            <td>${load[1]}</td>
+            <td>
+    <a href="load-details.html?load=${load[1]}">
+        ${load[1]}
+    </a>
+</td>
             <td>${load[2]}</td>
             <td>${load[3] ?? "-"}</td>
             <td>${load[6]}, ${load[7]}</td>
