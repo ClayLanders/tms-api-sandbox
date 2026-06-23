@@ -27,16 +27,29 @@ function renderCustomers(customers) {
         const row =
             document.createElement("tr");
 
+        row.style.cursor =
+            "pointer";
+
+        row.addEventListener(
+            "click",
+            () => {
+
+                window.location.href =
+                    `customer-details.html?id=${customer[0]}`;
+
+            }
+        );
+
         row.innerHTML = `
             <td>${customer[1]}</td>
-            <td>${customer[2]}</td>
-            <td>${customer[3]}</td>
-            <td>${customer[5]}</td>
-            <td>${customer[6]}</td>
+            <td>${customer[2] ?? ""}</td>
+            <td>${customer[3] ?? ""}</td>
+            <td>${customer[5] ?? ""}</td>
+            <td>${customer[6] ?? ""}</td>
 
             <td>
                 <button
-                    onclick="deleteCustomer(${customer[0]})"
+                    onclick="event.stopPropagation(); deleteCustomer(${customer[0]})"
                 >
                     Delete
                 </button>
@@ -62,31 +75,31 @@ function searchCustomers() {
     const filteredCustomers =
         allCustomers.filter(customer =>
 
-            customer[1]
+            String(customer[1] ?? "")
                 .toLowerCase()
                 .includes(searchValue)
 
             ||
 
-            customer[2]
+            String(customer[2] ?? "")
                 .toLowerCase()
                 .includes(searchValue)
 
             ||
 
-            customer[3]
+            String(customer[3] ?? "")
                 .toLowerCase()
                 .includes(searchValue)
 
             ||
 
-            customer[5]
+            String(customer[5] ?? "")
                 .toLowerCase()
                 .includes(searchValue)
 
             ||
 
-            customer[6]
+            String(customer[6] ?? "")
                 .toLowerCase()
                 .includes(searchValue)
 
