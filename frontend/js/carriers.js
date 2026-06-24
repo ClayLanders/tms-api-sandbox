@@ -27,17 +27,30 @@ function renderCarriers(carriers) {
         const row =
             document.createElement("tr");
 
+        row.style.cursor =
+            "pointer";
+
+        row.addEventListener(
+            "click",
+            () => {
+
+                window.location.href =
+                    `carrier-details.html?id=${carrier[0]}`;
+
+            }
+        );
+
         row.innerHTML = `
             <td>${carrier[1]}</td>
-            <td>${carrier[2]}</td>
-            <td>${carrier[3]}</td>
-            <td>${carrier[6]}</td>
-            <td>${carrier[7]}</td>
-            <td>${carrier[8]}</td>
+            <td>${carrier[2] ?? ""}</td>
+            <td>${carrier[3] ?? ""}</td>
+            <td>${carrier[5] ?? ""}</td>
+            <td>${carrier[7] ?? ""}</td>
+            <td>${carrier[8] ?? ""}</td>
 
             <td>
                 <button
-                    onclick="deleteCarrier(${carrier[0]})"
+                    onclick="event.stopPropagation(); deleteCarrier(${carrier[0]})"
                 >
                     Delete
                 </button>
@@ -63,37 +76,37 @@ function searchCarriers() {
     const filteredCarriers =
         allCarriers.filter(carrier =>
 
-            carrier[1]
+            String(carrier[1] ?? "")
                 .toLowerCase()
                 .includes(searchValue)
 
             ||
 
-            String(carrier[2])
+            String(carrier[2] ?? "")
                 .toLowerCase()
                 .includes(searchValue)
 
             ||
 
-            String(carrier[3])
+            String(carrier[3] ?? "")
                 .toLowerCase()
                 .includes(searchValue)
 
             ||
 
-            carrier[6]
+            String(carrier[5] ?? "")
                 .toLowerCase()
                 .includes(searchValue)
 
             ||
 
-            carrier[7]
+            String(carrier[7] ?? "")
                 .toLowerCase()
                 .includes(searchValue)
 
             ||
 
-            carrier[8]
+            String(carrier[8] ?? "")
                 .toLowerCase()
                 .includes(searchValue)
 
