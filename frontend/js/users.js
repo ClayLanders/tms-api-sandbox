@@ -27,6 +27,19 @@ function renderUsers(users) {
         const row =
             document.createElement("tr");
 
+        row.style.cursor =
+            "pointer";
+
+        row.addEventListener(
+            "click",
+            () => {
+
+                window.location.href =
+                    `user-details.html?id=${user[0]}`;
+
+            }
+        );
+
         row.innerHTML = `
             <td>${user[1]}</td>
             <td>${user[2]}</td>
@@ -35,7 +48,7 @@ function renderUsers(users) {
 
             <td>
                 <button
-                    onclick="deleteUser(${user[0]})"
+                    onclick="event.stopPropagation(); deleteUser(${user[0]})"
                 >
                     Delete
                 </button>
@@ -61,25 +74,25 @@ function searchUsers() {
     const filteredUsers =
         allUsers.filter(user =>
 
-            user[1]
+            String(user[1] ?? "")
                 .toLowerCase()
                 .includes(searchValue)
 
             ||
 
-            user[2]
+            String(user[2] ?? "")
                 .toLowerCase()
                 .includes(searchValue)
 
             ||
 
-            user[3]
+            String(user[3] ?? "")
                 .toLowerCase()
                 .includes(searchValue)
 
             ||
 
-            user[4]
+            String(user[4] ?? "")
                 .toLowerCase()
                 .includes(searchValue)
 
