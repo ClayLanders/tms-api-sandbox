@@ -29,11 +29,41 @@
 
     <div class="main-content">
 
-        <h1 class="page-title">API Explorer</h1>
+        <h1 class="page-title">
+            API Explorer
+        </h1>
 
         <div class="table-container">
 
-            <label for="endpoint-select">
+            <label>
+                Method
+            </label>
+
+            <br><br>
+
+            <select id="method-select">
+
+                <option value="GET">
+                    GET
+                </option>
+
+                <option value="POST">
+                    POST
+                </option>
+
+                <option value="PATCH">
+                    PATCH
+                </option>
+
+                <option value="DELETE">
+                    DELETE
+                </option>
+
+            </select>
+
+            <br><br>
+
+            <label>
                 Endpoint
             </label>
 
@@ -42,22 +72,57 @@
             <select id="endpoint-select">
 
                 <option value="/loads">
-                    GET /loads
+                    /loads
                 </option>
 
                 <option value="/customers">
-                    GET /customers
+                    /customers
                 </option>
 
                 <option value="/carriers">
-                    GET /carriers
+                    /carriers
                 </option>
 
                 <option value="/users">
-                    GET /users
+                    /users
+                </option>
+
+                <option value="/loads/L1001">
+                    /loads/L1001
+                </option>
+
+                <option value="/customers/1">
+                    /customers/1
+                </option>
+
+                <option value="/carriers/1">
+                    /carriers/1
+                </option>
+
+                <option value="/users/1">
+                    /users/1
                 </option>
 
             </select>
+
+            <br><br>
+
+            <label>
+                Request Body (JSON)
+            </label>
+
+            <br><br>
+
+            <textarea
+                id="request-body"
+                rows="15"
+                style="width:100%;"
+                placeholder='{
+  "name": "Example"
+}'
+            ></textarea>
+
+            <br><br>
 
             <button
                 class="btn"
