@@ -596,13 +596,13 @@ def get_load(load_number: str):
 
     return load_record
 
-#ADD NEW LOAD
+# ADD NEW LOAD
 
 @app.post("/loads")
 def create_load(
     load: dict = Body(
         example={
-            "load_number": "L1001",
+
             "customer_id": 1,
             "carrier_id": 1,
             "created_by_user_id": 1,
@@ -631,25 +631,32 @@ def create_load(
     conn = sqlite3.connect("mini_tms.db")
     c = conn.cursor()
 
-        # Verify load number is unique
+    # Generate next load number
 
     c.execute("""
     SELECT load_number
     FROM loads
-    WHERE load_number = ?
-    """, (load["load_number"],))
+    ORDER BY id DESC
+    LIMIT 1
+    """)
 
-    existing_load = c.fetchone()
+    last_load = c.fetchone()
 
-    if existing_load:
+    if last_load:
 
-        conn.close()
+        last_number = int(
+            last_load[0].replace("L", "")
+        )
 
-        return {
-            "message": "Load number already exists"
-        }
-    
-        # Validate status
+        load_number = (
+            f"L{last_number + 1}"
+        )
+
+    else:
+
+        load_number = "L1001"
+
+    # Validate status
 
     if load["status"] not in VALID_STATUSES:
 
@@ -658,8 +665,8 @@ def create_load(
         return {
             "message": "Invalid status"
         }
-    
-        # Validate carrier rate
+
+    # Validate carrier rate
 
     if load["carrier_rate"] < 0:
 
@@ -678,8 +685,8 @@ def create_load(
         return {
             "message": "Customer rate cannot be negative"
         }
-    
-        # Validate customer exists
+
+    # Validate customer exists
 
     c.execute("""
     SELECT id
@@ -696,8 +703,8 @@ def create_load(
         return {
             "message": "Customer not found"
         }
-    
-        # Validate carrier exists
+
+    # Validate carrier exists
 
     if load["carrier_id"] is not None:
 
@@ -716,8 +723,8 @@ def create_load(
             return {
                 "message": "Carrier not found"
             }
-    
-        # Validate user exists
+
+    # Validate user exists
 
     c.execute("""
     SELECT id
@@ -762,7 +769,7 @@ def create_load(
     )
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     """, (
-        load["load_number"],
+        load_number,
         load["customer_id"],
         load["carrier_id"],
         load["created_by_user_id"],
@@ -789,7 +796,9 @@ def create_load(
     conn.commit()
     conn.close()
 
-    return {"message": "Load created successfully"}
+    return {
+        "message": "Load created successfully"
+    }
 
 #UPDATE LOAD
 

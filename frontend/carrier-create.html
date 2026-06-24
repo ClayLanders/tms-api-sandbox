@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carriers</title>
+    <title>New Carrier</title>
 
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -29,47 +29,28 @@
 
     <div class="main-content">
 
-        <h1 class="page-title">Carriers</h1>
+        <h1>
+            New Carrier
+        </h1>
 
         <div class="action-buttons">
 
+            <a href="carriers.html" class="btn">
+                Back to Carriers
+            </a>
+
             <button
+                id="create-button"
                 class="btn"
-                onclick="window.location.href='carrier-create.html'"
             >
-                + New Carrier
+                Create Carrier
             </button>
 
         </div>
 
-        <input
-            type="text"
-            id="carrier-search"
-            placeholder="Search carriers..."
-        >
+        <div id="carrier-details">
 
-
-        <div class="table-container">
-
-            <table>
-
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>MC Number</th>
-                        <th>DOT Number</th>
-                        <th>Phone</th>
-                        <th>City</th>
-                        <th>State</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-
-                <tbody id="carriers-table-body">
-
-                </tbody>
-
-            </table>
+            Loading...
 
         </div>
 
@@ -78,7 +59,7 @@
 </div>
 
 <script src="js/config.js"></script>
-<script src="js/carriers.js"></script>
+<script src="js/carrier-create.js"></script>
 
 </body>
 </html>

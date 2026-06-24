@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customers</title>
+    <title>New Customer</title>
 
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -29,45 +29,28 @@
 
     <div class="main-content">
 
-        <h1 class="page-title">Customers</h1>
+        <h1>
+            New Customer
+        </h1>
 
         <div class="action-buttons">
 
+            <a href="customers.html" class="btn">
+                Back to Customers
+            </a>
+
             <button
+                id="create-button"
                 class="btn"
-                onclick="window.location.href='customer-create.html'"
             >
-                + New Customer
+                Create Customer
             </button>
 
         </div>
 
-        <input
-            type="text"
-            id="customer-search"
-            placeholder="Search customers..."
-        >
+        <div id="customer-details">
 
-        <div class="table-container">
-
-            <table>
-
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>City</th>
-                        <th>State</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-
-                <tbody id="customers-table-body">
-
-                </tbody>
-
-            </table>
+            Loading...
 
         </div>
 
@@ -76,7 +59,7 @@
 </div>
 
 <script src="js/config.js"></script>
-<script src="js/customers.js"></script>
+<script src="js/customer-create.js"></script>
 
 </body>
 </html>
