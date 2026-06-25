@@ -361,3 +361,70 @@ input[type="text"]:focus {
     color: white;
 
 }
+
+.api-endpoint {
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 8px;
+    margin-bottom: 6px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+}
+
+.api-endpoint:hover {
+
+    background-color: #f3f4f6;
+
+}
+
+.badge-get,
+.badge-post,
+.badge-patch,
+.badge-delete {
+
+    color: white;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    padding: 4px 8px;
+
+    border-radius: 4px;
+
+    min-width: 60px;
+
+    text-align: center;
+
+}
+
+.badge-get {
+
+    background-color: #16a34a;
+
+}
+
+.badge-post {
+
+    background-color: #2563eb;
+
+}
+
+.badge-patch {
+
+    background-color: #ea580c;
+
+}
+
+.badge-delete {
+
+    background-color: #dc2626;
+
+}

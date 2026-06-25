@@ -152,6 +152,25 @@ ${responseTime} ms
 
 }
 
+function loadEndpoint(
+    method,
+    endpoint
+) {
+
+    document.getElementById(
+        "method-select"
+    ).value =
+        method;
+
+    document.getElementById(
+        "endpoint-input"
+    ).value =
+        endpoint;
+
+    handleMethodChange();
+
+}
+
 function copyResponse() {
 
     navigator.clipboard.writeText(

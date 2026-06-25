@@ -41,45 +41,173 @@
 
                 <h3>Customers</h3>
 
-                <ul>
-                    <li>GET /customers</li>
-                    <li>GET /customers/{id}</li>
-                    <li>POST /customers</li>
-                    <li>PATCH /customers/{id}</li>
-                    <li>DELETE /customers/{id}</li>
-                </ul>
+             <div
+                class="api-endpoint"
+                onclick="loadEndpoint('GET','/customers')"
+             >
+                 <span class="badge-get">GET</span>
+                     /customers
+            </div>
+
+            <div
+                 class="api-endpoint"
+                onclick="loadEndpoint('GET','/customers/1')"
+            >
+                <span class="badge-get">GET</span>
+                    /customers/{id}
+            </div>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('POST','/customers')"
+            >
+                <span class="badge-post">POST</span>
+                    /customers
+            </div>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('PATCH','/customers/1')"
+            >
+                 <span class="badge-patch">PATCH</span>
+                    /customers/{id}
+            </div>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('DELETE','/customers/1')"
+            >
+                <span class="badge-delete">DELETE</span>
+                    /customers/{id}
+            </div>
 
                 <h3>Carriers</h3>
 
-                <ul>
-                    <li>GET /carriers</li>
-                    <li>GET /carriers/{id}</li>
-                    <li>POST /carriers</li>
-                    <li>PATCH /carriers/{id}</li>
-                    <li>DELETE /carriers/{id}</li>
-                </ul>
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('GET','/carriers')"
+            >
+                <span class="badge-get">GET</span>
+                    /carriers
+            </div>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('GET','/carriers/1')"
+            >
+                <span class="badge-get">GET</span>
+                    /carriers/{id}
+            </div>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('POST','/carriers')"
+            >
+                <span class="badge-post">POST</span>
+                    /carriers
+            </div>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('PATCH','/carriers/1')"
+            >
+                <span class="badge-patch">PATCH</span>
+                    /carriers/{id}
+            </div>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('DELETE','/carriers/1')"
+            >
+                <span class="badge-delete">DELETE</span>
+                    /carriers/{id}
+            </div>
 
                 <h3>Users</h3>
 
-                <ul>
-                    <li>GET /users</li>
-                    <li>GET /users/{id}</li>
-                    <li>POST /users</li>
-                    <li>PATCH /users/{id}</li>
-                    <li>DELETE /users/{id}</li>
-                </ul>
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('GET','/users')"
+            >
+                <span class="badge-get">GET</span>
+                    /users
+            </div>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('GET','/users/1')"
+            >
+                <span class="badge-get">GET</span>
+                    /users/{id}
+            </div>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('POST','/users')"
+            >
+                <span class="badge-post">POST</span>
+                    /users
+            </div>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('PATCH','/users/1')"
+            >
+                 <span class="badge-patch">PATCH</span>
+                    /users/{id}
+            </div>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('DELETE','/users/1')"
+            >
+                <span class="badge-delete">DELETE</span>
+                    /users/{id}
+            </div>
 
                 <h3>Loads</h3>
 
-                <ul>
-                    <li>GET /loads</li>
-                    <li>GET /loads/{load_number}</li>
-                    <li>POST /loads</li>
-                    <li>PATCH /loads/{load_number}</li>
-                    <li>DELETE /loads/{load_number}</li>
-                </ul>
-
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('GET','/loads')"
+            >
+                <span class="badge-get">GET</span>
+                    /loads
             </div>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('GET','/loads/L1001')"
+            >
+                <span class="badge-get">GET</span>
+                    /loads/{load#}
+            </div>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('POST','/loads')"
+            >
+                <span class="badge-post">POST</span>
+                    /loads
+            </div>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('PATCH','/loads/L1001')"
+            >
+                <span class="badge-patch">PATCH</span>
+                    /loads/{load#}
+            </div>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('DELETE','/loads/L1001')"
+            >
+                <span class="badge-delete">DELETE</span>
+                    /loads/{load#}
+            </div>
+
+        </div>
 
             <div class="api-explorer">
 
