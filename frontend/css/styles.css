@@ -214,3 +214,150 @@ input[type="text"]:focus {
     grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
+
+/* API Explorer */
+
+.api-layout {
+
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 20px;
+
+}
+
+.api-docs {
+
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, .1);
+
+}
+
+.api-docs h2 {
+
+    margin-bottom: 20px;
+
+}
+
+.api-docs h3 {
+
+    margin-top: 20px;
+    margin-bottom: 10px;
+
+}
+
+.api-docs ul {
+
+    padding-left: 20px;
+
+}
+
+.api-docs li {
+
+    margin-bottom: 6px;
+
+}
+
+.api-explorer {
+
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, .1);
+
+}
+
+#endpoint-input {
+
+    width: 100%;
+
+}
+
+#request-body {
+
+    width: 100%;
+    padding: 12px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+
+    font-family:
+        Consolas,
+        Monaco,
+        monospace;
+
+}
+
+#request-url {
+
+    background: #f4f6f9;
+    padding: 10px;
+
+    border-radius: 6px;
+
+    font-family:
+        Consolas,
+        Monaco,
+        monospace;
+
+    border:
+        1px solid #d1d5db;
+
+}
+
+#response-meta {
+
+    background: #f4f6f9;
+    padding: 10px;
+
+    border-radius: 6px;
+
+    border:
+        1px solid #d1d5db;
+
+}
+
+/* API Method Colors */
+
+#method-select {
+
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+
+    font-weight: bold;
+
+}
+
+.method-get {
+
+    background-color: #16a34a;
+    color: white;
+
+}
+
+.method-post {
+
+    background-color: #2563eb;
+    color: white;
+
+}
+
+.method-patch {
+
+    background-color: #ea580c;
+    color: white;
+
+}
+
+.method-delete {
+
+    background-color: #dc2626;
+    color: white;
+
+}

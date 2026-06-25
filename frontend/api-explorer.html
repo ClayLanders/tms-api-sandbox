@@ -33,115 +33,144 @@
             API Explorer
         </h1>
 
-        <div class="table-container">
+        <div class="api-layout">
 
-            <label>
-                Method
-            </label>
+            <div class="api-docs">
 
-            <br><br>
+                <h2>API Documentation</h2>
 
-            <select id="method-select">
+                <h3>Customers</h3>
 
-                <option value="GET">
-                    GET
-                </option>
+                <ul>
+                    <li>GET /customers</li>
+                    <li>GET /customers/{id}</li>
+                    <li>POST /customers</li>
+                    <li>PATCH /customers/{id}</li>
+                    <li>DELETE /customers/{id}</li>
+                </ul>
 
-                <option value="POST">
-                    POST
-                </option>
+                <h3>Carriers</h3>
 
-                <option value="PATCH">
-                    PATCH
-                </option>
+                <ul>
+                    <li>GET /carriers</li>
+                    <li>GET /carriers/{id}</li>
+                    <li>POST /carriers</li>
+                    <li>PATCH /carriers/{id}</li>
+                    <li>DELETE /carriers/{id}</li>
+                </ul>
 
-                <option value="DELETE">
-                    DELETE
-                </option>
+                <h3>Users</h3>
 
-            </select>
+                <ul>
+                    <li>GET /users</li>
+                    <li>GET /users/{id}</li>
+                    <li>POST /users</li>
+                    <li>PATCH /users/{id}</li>
+                    <li>DELETE /users/{id}</li>
+                </ul>
 
-            <br><br>
+                <h3>Loads</h3>
 
-            <label>
-                Endpoint
-            </label>
+                <ul>
+                    <li>GET /loads</li>
+                    <li>GET /loads/{load_number}</li>
+                    <li>POST /loads</li>
+                    <li>PATCH /loads/{load_number}</li>
+                    <li>DELETE /loads/{load_number}</li>
+                </ul>
 
-            <br><br>
-
-            <select id="endpoint-select">
-
-                <option value="/loads">
-                    /loads
-                </option>
-
-                <option value="/customers">
-                    /customers
-                </option>
-
-                <option value="/carriers">
-                    /carriers
-                </option>
-
-                <option value="/users">
-                    /users
-                </option>
-
-                <option value="/loads/L1001">
-                    /loads/L1001
-                </option>
-
-                <option value="/customers/1">
-                    /customers/1
-                </option>
-
-                <option value="/carriers/1">
-                    /carriers/1
-                </option>
-
-                <option value="/users/1">
-                    /users/1
-                </option>
-
-            </select>
-
-            <br><br>
-
-            <label>
-                Request Body (JSON)
-            </label>
-
-            <br><br>
-
-            <textarea
-                id="request-body"
-                rows="15"
-                style="width:100%;"
-                placeholder='{
-  "name": "Example"
-}'
-            ></textarea>
-
-            <br><br>
-
-            <button
-                class="btn"
-                onclick="runEndpoint()"
-            >
-                Execute
-            </button>
-
-            <br><br>
-
-            <div class="terminal-header">
-                API Response
             </div>
 
-            <pre id="api-response">
+            <div class="api-explorer">
+
+                <label>Method</label>
+
+                <br><br>
+
+                <select id="method-select">
+
+                    <option value="GET">GET</option>
+                    <option value="POST">POST</option>
+                    <option value="PATCH">PATCH</option>
+                    <option value="DELETE">DELETE</option>
+
+                </select>
+
+                <br><br>
+
+                <label>Endpoint</label>
+
+                <br><br>
+
+                <input
+                    type="text"
+                    id="endpoint-input"
+                    placeholder="/customers"
+                >
+
+                <br><br>
+
+                <label>Request Body (JSON)</label>
+
+                <br><br>
+
+                <textarea
+                    id="request-body"
+                    rows="12"
+                    placeholder='{
+  "name": "Example"
+}'
+                ></textarea>
+
+                <br><br>
+
+                <div id="request-url">
+
+                    Ready to execute request
+
+                </div>
+
+                <br>
+
+                <button
+                    class="btn"
+                    onclick="runEndpoint()"
+                >
+                    Execute
+                </button>
+
+                <button
+                    class="btn"
+                    onclick="copyResponse()"
+                >
+                    Copy Response
+                </button>
+
+                <br><br>
+
+                <div id="response-meta">
+
+                    Status: -
+
+                    <br>
+
+                    Response Time: -
+
+                </div>
+
+                <br>
+
+                <div class="terminal-header">
+                    API Response
+                </div>
+
+                <pre id="api-response">
 
 Select an endpoint and click Execute.
 
-            </pre>
+                </pre>
+
+            </div>
 
         </div>
 
