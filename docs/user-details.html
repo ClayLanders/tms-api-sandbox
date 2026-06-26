@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="sidebar">
+
+        <img
+        src="images/TMSsandbox.png"
+        alt="TMS API Sandbox"
+        class="sidebar-logo"
+        >
+
+        <ul>
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="loads.html">Loads</a></li>
+            <li><a href="customers.html">Customers</a></li>
+            <li><a href="carriers.html">Carriers</a></li>
+            <li><a href="users.html" class="active-link">Users</a></li>
+            <li><a href="api-explorer.html">API Explorer</a></li>
+        </ul>
+
+    </div>
+
+    <div class="main-content">
+
+        <h1 id="user-title">
+            user Details
+        </h1>
+
+        <div class="action-buttons">
+
+            <a href="users.html" class="btn">
+                Back to users
+            </a>
+
+            <button
+                id="edit-button"
+                class="btn"
+            >
+                Edit
+            </button>
+
+            <button
+                id="cancel-button"
+                class="btn"
+                style="display:none;"
+            >
+                Cancel
+            </button>
+
+            <button
+                class="btn"
+                onclick="alert('Delete from details page coming soon')"
+            >
+                Delete
+            </button>
+
+        </div>
+
+        <div id="user-details">
+
+            Loading...
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/user-details.js"></script>
+
+</body>
+</html>

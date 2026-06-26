@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Explorer</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="sidebar">
+
+        <img
+        src="images/TMSsandbox.png"
+        alt="TMS API Sandbox"
+        class="sidebar-logo"
+        >
+
+        <ul>
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="loads.html">Loads</a></li>
+            <li><a href="customers.html">Customers</a></li>
+            <li><a href="carriers.html">Carriers</a></li>
+            <li><a href="users.html">Users</a></li>
+            <li><a href="api-explorer.html" class="active-link">API Explorer</a></li>
+        </ul>
+
+    </div>
+
+    <div class="main-content">
+
+        <h1 class="page-title">
+            API Explorer
+        </h1>
+
+        <div class="api-layout">
+
+            <div class="api-docs">
+
+                <h2>API Documentation</h2>
+
+                <h3>Customers</h3>
+
+             <div
+                class="api-endpoint"
+                onclick="loadEndpoint('GET','/customers')"
+             >
+                 <span class="badge-get">GET</span>
+                     /customers
+            </div>
+
+            <div
+                 class="api-endpoint"
+                onclick="loadEndpoint('GET','/customers/1')"
+            >
+                <span class="badge-get">GET</span>
+                    /customers/{id}
+            </div>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('POST','/customers')"
+            >
+                <span class="badge-post">POST</span>
+                    /customers
+            </div>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('PATCH','/customers/1')"
+            >
+                 <span class="badge-patch">PATCH</span>
+                    /customers/{id}
+            </div>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('DELETE','/customers/1')"
+            >
+                <span class="badge-delete">DELETE</span>
+                    /customers/{id}
+            </div>
+
+                <h3>Carriers</h3>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('GET','/carriers')"
+            >
+                <span class="badge-get">GET</span>
+                    /carriers
+            </div>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('GET','/carriers/1')"
+            >
+                <span class="badge-get">GET</span>
+                    /carriers/{id}
+            </div>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('POST','/carriers')"
+            >
+                <span class="badge-post">POST</span>
+                    /carriers
+            </div>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('PATCH','/carriers/1')"
+            >
+                <span class="badge-patch">PATCH</span>
+                    /carriers/{id}
+            </div>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('DELETE','/carriers/1')"
+            >
+                <span class="badge-delete">DELETE</span>
+                    /carriers/{id}
+            </div>
+
+                <h3>Users</h3>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('GET','/users')"
+            >
+                <span class="badge-get">GET</span>
+                    /users
+            </div>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('GET','/users/1')"
+            >
+                <span class="badge-get">GET</span>
+                    /users/{id}
+            </div>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('POST','/users')"
+            >
+                <span class="badge-post">POST</span>
+                    /users
+            </div>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('PATCH','/users/1')"
+            >
+                 <span class="badge-patch">PATCH</span>
+                    /users/{id}
+            </div>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('DELETE','/users/1')"
+            >
+                <span class="badge-delete">DELETE</span>
+                    /users/{id}
+            </div>
+
+                <h3>Loads</h3>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('GET','/loads')"
+            >
+                <span class="badge-get">GET</span>
+                    /loads
+            </div>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('GET','/loads/L1001')"
+            >
+                <span class="badge-get">GET</span>
+                    /loads/{load#}
+            </div>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('POST','/loads')"
+            >
+                <span class="badge-post">POST</span>
+                    /loads
+            </div>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('PATCH','/loads/L1001')"
+            >
+                <span class="badge-patch">PATCH</span>
+                    /loads/{load#}
+            </div>
+
+            <div
+                class="api-endpoint"
+                onclick="loadEndpoint('DELETE','/loads/L1001')"
+            >
+                <span class="badge-delete">DELETE</span>
+                    /loads/{load#}
+            </div>
+
+        </div>
+
+            <div class="api-explorer">
+
+                <label>Method</label>
+
+                <br><br>
+
+                <select id="method-select">
+
+                    <option value="GET">GET</option>
+                    <option value="POST">POST</option>
+                    <option value="PATCH">PATCH</option>
+                    <option value="DELETE">DELETE</option>
+
+                </select>
+
+                <br><br>
+
+                <label>Endpoint</label>
+
+                <br><br>
+
+                <input
+                    type="text"
+                    id="endpoint-input"
+                    placeholder="/customers"
+                >
+
+                <br><br>
+
+                <label>Request Body (JSON)</label>
+
+                <br><br>
+
+                <textarea
+                    id="request-body"
+                    rows="12"
+                    placeholder='{
+  "name": "Example"
+}'
+                ></textarea>
+
+                <br><br>
+
+                <div id="request-url">
+
+                    Ready to execute request
+
+                </div>
+
+                <br>
+
+                <button
+                    class="btn"
+                    onclick="runEndpoint()"
+                >
+                    Execute
+                </button>
+
+                <button
+                    class="btn"
+                    onclick="copyResponse()"
+                >
+                    Copy Response
+                </button>
+
+                <br><br>
+
+                <div id="response-meta">
+
+                    Status: -
+
+                    <br>
+
+                    Response Time: -
+
+                </div>
+
+                <br>
+
+                <div class="terminal-header">
+                    API Response
+                </div>
+
+                <pre id="api-response">
+
+Select an endpoint and click Execute.
+
+                </pre>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/api-explorer.js"></script>
+
+</body>
+</html>
