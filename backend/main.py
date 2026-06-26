@@ -1,6 +1,9 @@
 from fastapi import FastAPI, Body
 from fastapi.middleware.cors import CORSMiddleware
+
 import sqlite3
+import os
+import subprocess
 
 app = FastAPI()
 
@@ -11,6 +14,28 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# -----------------------------
+# Initialize database if needed
+# -----------------------------
+
+DB_FILE = "mini_tms.db"
+
+if not os.path.exists(DB_FILE):
+
+    print("Database not found. Creating...")
+
+    subprocess.run(
+        ["python", "create_database.py"],
+        check=True
+    )
+
+    subprocess.run(
+        ["python", "seed_data.py"],
+        check=True
+    )
+
+    print("Database created successfully.")
 
 # ------------------------
 # ROOT
