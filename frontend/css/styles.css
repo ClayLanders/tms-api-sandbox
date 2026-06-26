@@ -53,6 +53,14 @@ body {
     background-color: #374151;
 }
 
+.sidebar-logo {
+
+    width: 180px;
+    display: block;
+    margin: 0 auto 30px;
+
+}
+
 /* Main Content */
 
 .main-content {
