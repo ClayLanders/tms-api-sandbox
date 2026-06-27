@@ -1,204 +1,240 @@
-TMS API Sandbox
+# TMS API Sandbox
 
-A full-stack logistics API demonstration built with FastAPI, SQLite, and vanilla JavaScript. This project simulates core Transportation Management System (TMS) workflows while demonstrating REST API development, relational database design, frontend integration, and cloud deployment.
+A full-stack logistics API demonstration built with **FastAPI**, **SQLite**, and **vanilla JavaScript**. TMS API Sandbox simulates core Transportation Management System (TMS) workflows while showcasing REST API development, relational database design, frontend integration, and cloud deployment.
 
-⸻
+---
 
-🌐 Live Application
+## 🚀 Live Demo
 
-Application
-
+**Application**  
 https://tms-sandbox.claylanders.me
 
-API Documentation (Swagger UI)
-
+**Interactive API Documentation (Swagger UI)**  
 https://api.tms-sandbox.claylanders.me/docs
 
-⸻
+---
 
-Project Overview
+## ✨ Highlights
 
-TMS API Sandbox was created as a portfolio project to demonstrate backend API development using technologies commonly found in modern logistics software.
+- Full REST API built with FastAPI
+- Interactive Swagger documentation
+- Custom browser-based API Explorer
+- SQLite relational database
+- CRUD operations across multiple resources
+- Realistic logistics seed data
+- Responsive dashboard and detail pages
+- Automatic deployments from GitHub
+- Custom domains with HTTPS
+- Cloud hosted on Render
 
-Rather than attempting to recreate a production Transportation Management System, the application focuses on exposing a clean REST API backed by a relational database while providing an intuitive browser interface for interacting with and testing the API.
+---
 
-The project demonstrates:
+# Overview
 
-* RESTful API design
-* CRUD operations
-* Relational database modeling
-* Frontend/backend communication
-* Logistics data relationships
-* API documentation
-* Cloud deployment
-* Custom domain configuration
+TMS API Sandbox was built as a portfolio project to demonstrate backend API development using technologies commonly found in modern logistics software.
 
-⸻
+Rather than attempting to recreate a production Transportation Management System, the application focuses on exposing a clean REST API backed by a relational database while providing an intuitive web interface for exploring and interacting with the API.
 
-Technology Stack
+The project demonstrates practical experience with:
 
-Backend
+- REST API design
+- CRUD operations
+- Relational database modeling
+- Frontend/backend communication
+- Logistics software concepts
+- API documentation
+- Cloud deployment
+- Custom domain configuration
 
-* Python
-* FastAPI
-* SQLite
+---
 
-Frontend
+# Technology Stack
 
-* HTML5
-* CSS3
-* Vanilla JavaScript
+## Backend
 
-Deployment
+- Python
+- FastAPI
+- SQLite
 
-* Render Web Service
-* Render Static Site
-* GitHub
-* Custom Domains
+## Frontend
 
-⸻
+- HTML5
+- CSS3
+- Vanilla JavaScript
 
-Features
+## Deployment
 
-Dashboard
+- Render Web Service
+- Render Static Site
+- GitHub
+- Custom Domains
+- HTTPS (Let's Encrypt)
 
-* Open Load Count
-* Booked Load Count
-* In Transit Load Count
-* Delivered Load Count
+---
 
-⸻
+# Features
 
-Load Management
+## Dashboard
 
-* View all loads
-* Individual load detail pages
-* Shipment status tracking
-* Pickup and delivery locations
-* Customer relationships
-* Carrier relationships
-* Customer and carrier rates
+Provides a high-level operational overview including:
 
-⸻
+- Open Loads
+- Booked Loads
+- In Transit Loads
+- Delivered Loads
 
-Customer Management
+---
 
-* Customer directory
-* Customer detail pages
-* Create new customers
-* Contact and location information
+## Load Management
 
-⸻
+- View all loads
+- Individual load detail pages
+- Shipment status tracking
+- Pickup and delivery locations
+- Customer relationships
+- Carrier relationships
+- Customer and carrier rates
 
-Carrier Management
+---
 
-* Carrier directory
-* Carrier detail pages
-* Create new carriers
-* MC Number
-* DOT Number
-* Contact information
+## Customer Management
 
-⸻
+- Customer directory
+- Customer detail pages
+- Create new customers
+- Contact and address information
 
-User Management
+---
 
-* User directory
-* User detail pages
-* Create new users
-* Roles and contact information
+## Carrier Management
 
-⸻
+- Carrier directory
+- Carrier detail pages
+- Create new carriers
+- MC Number
+- DOT Number
+- Contact information
 
-Interactive API Explorer
+---
 
-The application includes a built-in API Explorer that allows users to interact directly with the REST API.
+## User Management
+
+- User directory
+- User detail pages
+- Create new users
+- User roles
+- Contact information
+
+---
+
+## API Explorer
+
+The application includes a built-in API Explorer that allows users to interact directly with the REST API without leaving the application.
 
 Features include:
 
-* GET requests
-* POST requests
-* PATCH requests
-* DELETE requests
-* Custom endpoint entry
-* JSON request body editor
-* Formatted API responses
-* One-click endpoint shortcuts
-* Quick links to Swagger documentation
+- GET requests
+- POST requests
+- PATCH requests
+- DELETE requests
+- Custom endpoint entry
+- JSON request editor
+- Formatted API responses
+- Endpoint shortcut badges
+- Quick links to Swagger documentation
 
-⸻
+---
 
-REST API
+# REST API
 
-Customers
+## Customers
 
-* GET /customers
-* GET /customers/{id}
-* POST /customers
-* PATCH /customers/{id}
-* DELETE /customers/{id}
+- GET `/customers`
+- GET `/customers/{id}`
+- POST `/customers`
+- PATCH `/customers/{id}`
+- DELETE `/customers/{id}`
 
-Carriers
+## Carriers
 
-* GET /carriers
-* GET /carriers/{id}
-* POST /carriers
-* PATCH /carriers/{id}
-* DELETE /carriers/{id}
+- GET `/carriers`
+- GET `/carriers/{id}`
+- POST `/carriers`
+- PATCH `/carriers/{id}`
+- DELETE `/carriers/{id}`
 
-Users
+## Users
 
-* GET /users
-* GET /users/{id}
-* POST /users
-* PATCH /users/{id}
-* DELETE /users/{id}
+- GET `/users`
+- GET `/users/{id}`
+- POST `/users`
+- PATCH `/users/{id}`
+- DELETE `/users/{id}`
 
-Loads
+## Loads
 
-* GET /loads
-* GET /loads/{load_number}
-* POST /loads
-* PATCH /loads/{load_number}
-* DELETE /loads/{load_number}
+- GET `/loads`
+- GET `/loads/{load_number}`
+- POST `/loads`
+- PATCH `/loads/{load_number}`
+- DELETE `/loads/{load_number}`
 
-⸻
+---
 
-Database
+# Database Design
 
-The application models four primary entities commonly found in transportation management systems.
+The application models four core entities commonly found within Transportation Management Systems.
 
-Customers
+## Customers
 
-* Contact information
-* Address information
+Stores:
 
-Carriers
+- Company information
+- Contact information
+- Address information
 
-* MC Number
-* DOT Number
-* Contact information
+---
 
-Users
+## Carriers
 
-* Internal users
-* Roles
-* Contact information
+Stores:
 
-Loads
+- Company information
+- MC Number
+- DOT Number
+- Contact information
 
-* Auto-generated load numbers
-* Customer relationships
-* Carrier relationships
-* Pickup and delivery information
-* Customer and carrier rates
-* Shipment status
-* Audit timestamps
+---
 
-⸻
+## Users
 
-Project Structure
+Stores:
 
+- Employee information
+- Roles
+- Contact information
+
+---
+
+## Loads
+
+Stores:
+
+- Auto-generated load numbers
+- Customer relationships
+- Carrier relationships
+- Pickup information
+- Delivery information
+- Customer rate
+- Carrier rate
+- Shipment status
+- Audit timestamps
+
+---
+
+# Project Structure
+
+```text
 mini-tms/
 │
 ├── backend/
@@ -210,7 +246,9 @@ mini-tms/
 │
 ├── frontend/
 │   ├── index.html
-│   ├── api-explorer.html
+│   ├── loads.html
+│   ├── load-details.html
+│   ├── load-create.html
 │   ├── customers.html
 │   ├── customer-details.html
 │   ├── customer-create.html
@@ -220,48 +258,48 @@ mini-tms/
 │   ├── users.html
 │   ├── user-details.html
 │   ├── user-create.html
-│   ├── loads.html
-│   ├── load-details.html
-│   ├── load-create.html
+│   ├── api-explorer.html
+│   │
 │   ├── css/
 │   ├── js/
 │   └── images/
 │
 └── README.md
+```
 
-⸻
+---
 
-Future Enhancements
+# Roadmap
 
-Planned improvements include:
+Planned enhancements include:
 
-* JWT Authentication
-* Role-based permissions
-* PostgreSQL migration
-* Accounts Receivable module
-* Accounts Payable module
-* Invoice generation
-* Proof of Delivery (POD) uploads
-* CSV import/export
-* Reporting dashboard
-* Mock EDI integrations (204, 990, 214, 210)
-* External API integrations
+- JWT Authentication
+- Role-based permissions
+- PostgreSQL migration
+- Accounts Receivable
+- Accounts Payable
+- Invoice generation
+- Proof of Delivery (POD) uploads
+- CSV import/export
+- Reporting dashboard
+- Mock EDI integrations
+- External API integrations
 
-⸻
+---
 
-Purpose
+# Purpose
 
-This project was built to strengthen practical experience with:
+Although inspired by Transportation Management Systems, **TMS API Sandbox** is intentionally designed as an API demonstration project rather than a production-ready TMS.
 
-* REST API development
-* FastAPI
-* SQL and relational databases
-* Frontend/backend integration
-* CRUD application architecture
-* Logistics software concepts
-* Git and GitHub workflows
-* Cloud deployment
-* Custom domains
-* API documentation
+The project was created to strengthen practical experience with:
 
-Although inspired by Transportation Management Systems, the application is intentionally presented as an API Sandbox designed to demonstrate backend development, system design, and API integration concepts rather than serve as a production-ready TMS.
+- FastAPI
+- REST API development
+- SQL and relational databases
+- CRUD application architecture
+- Frontend/backend integration
+- JavaScript
+- Git and GitHub
+- Cloud deployment
+- Custom domains
+- Logistics software architecture
