@@ -1,256 +1,267 @@
-# TMS API Sandbox
+TMS API Sandbox
 
-A lightweight Transportation Management System (TMS) built to learn and demonstrate database design, API development, frontend integration, and logistics workflows.
+A full-stack logistics API demonstration built with FastAPI, SQLite, and vanilla JavaScript. This project simulates core Transportation Management System (TMS) workflows while demonstrating REST API development, relational database design, frontend integration, and cloud deployment.
 
-## Overview
+⸻
 
-Mini TMS is a full-stack application built with:
+🌐 Live Application
+
+Application
+
+https://tms-sandbox.claylanders.me
+
+API Documentation (Swagger UI)
+
+https://api.tms-sandbox.claylanders.me/docs
+
+⸻
+
+Project Overview
+
+TMS API Sandbox was created as a portfolio project to demonstrate backend API development using technologies commonly found in modern logistics software.
+
+Rather than attempting to recreate a production Transportation Management System, the application focuses on exposing a clean REST API backed by a relational database while providing an intuitive browser interface for interacting with and testing the API.
+
+The project demonstrates:
+
+* RESTful API design
+* CRUD operations
+* Relational database modeling
+* Frontend/backend communication
+* Logistics data relationships
+* API documentation
+* Cloud deployment
+* Custom domain configuration
+
+⸻
+
+Technology Stack
+
+Backend
 
 * Python
 * FastAPI
 * SQLite
-* HTML
-* CSS
-* JavaScript
 
-The project simulates core functionality commonly found in transportation management systems used by freight brokers, carriers, and logistics providers.
+Frontend
 
-The goal of the project is to gain hands-on experience with:
+* HTML5
+* CSS3
+* Vanilla JavaScript
 
-* Relational databases
-* REST APIs
-* Frontend/backend communication
-* Logistics workflows
-* System integrations
+Deployment
 
----
+* Render Web Service
+* Render Static Site
+* GitHub
+* Custom Domains
 
-## Current Features
+⸻
 
-### Dashboard
+Features
+
+Dashboard
 
 * Open Load Count
-* Covered Load Count
+* Booked Load Count
 * In Transit Load Count
 * Delivered Load Count
 
-### Loads
+⸻
+
+Load Management
 
 * View all loads
-* Customer and carrier relationships
-* Pickup and delivery locations
+* Individual load detail pages
 * Shipment status tracking
+* Pickup and delivery locations
+* Customer relationships
+* Carrier relationships
+* Customer and carrier rates
 
-### Customers
+⸻
 
-* View customer information
-* Contact details
-* Location information
+Customer Management
 
-### Carriers
+* Customer directory
+* Customer detail pages
+* Create new customers
+* Contact and location information
 
-* View carrier information
+⸻
+
+Carrier Management
+
+* Carrier directory
+* Carrier detail pages
+* Create new carriers
 * MC Number
 * DOT Number
-* Contact details
+* Contact information
 
-### Users
+⸻
 
-* View system users
+User Management
+
+* User directory
+* User detail pages
+* Create new users
 * Roles and contact information
 
-### API Explorer
+⸻
 
-A built-in API Explorer allows users to execute and view API responses directly from the application.
+Interactive API Explorer
 
-Available endpoints include:
+The application includes a built-in API Explorer that allows users to interact directly with the REST API.
 
-* GET /loads
-* GET /customers
-* GET /carriers
-* GET /users
+Features include:
 
----
+* GET requests
+* POST requests
+* PATCH requests
+* DELETE requests
+* Custom endpoint entry
+* JSON request body editor
+* Formatted API responses
+* One-click endpoint shortcuts
+* Quick links to Swagger documentation
 
-## Database Structure
+⸻
 
-Current entities include:
+REST API
 
-### Customers
-
-Stores customer information including:
-
-* Name
-* Email
-* Phone
-* Address
-* City
-* State
-* ZIP Code
-
-### Carriers
-
-Stores carrier information including:
-
-* Name
-* MC Number
-* DOT Number
-* Contact Information
-
-### Users
-
-Stores internal user information including:
-
-* First Name
-* Last Name
-* Email
-* Role
-
-### Loads
-
-Stores shipment information including:
-
-* Load Number
-* Customer
-* Carrier
-* Pickup Information
-* Delivery Information
-* Rates
-* Status
-* Audit Timestamps
-
----
-
-## API Endpoints
-
-### Customers
+Customers
 
 * GET /customers
-* GET /customers/{customer_id}
+* GET /customers/{id}
 * POST /customers
+* PATCH /customers/{id}
+* DELETE /customers/{id}
 
-### Carriers
+Carriers
 
 * GET /carriers
-* GET /carriers/{carrier_id}
+* GET /carriers/{id}
 * POST /carriers
+* PATCH /carriers/{id}
+* DELETE /carriers/{id}
 
-### Users
+Users
 
 * GET /users
-* GET /users/{user_id}
+* GET /users/{id}
 * POST /users
+* PATCH /users/{id}
+* DELETE /users/{id}
 
-### Loads
+Loads
 
 * GET /loads
 * GET /loads/{load_number}
 * POST /loads
+* PATCH /loads/{load_number}
+* DELETE /loads/{load_number}
 
----
+⸻
 
-## Project Structure
+Database
 
-```text
+The application models four primary entities commonly found in transportation management systems.
+
+Customers
+
+* Contact information
+* Address information
+
+Carriers
+
+* MC Number
+* DOT Number
+* Contact information
+
+Users
+
+* Internal users
+* Roles
+* Contact information
+
+Loads
+
+* Auto-generated load numbers
+* Customer relationships
+* Carrier relationships
+* Pickup and delivery information
+* Customer and carrier rates
+* Shipment status
+* Audit timestamps
+
+⸻
+
+Project Structure
+
 mini-tms/
-
+│
 ├── backend/
 │   ├── main.py
 │   ├── create_database.py
 │   ├── seed_data.py
-│   ├── test_queries.py
-│   ├── mini_tms.db
-│   └── requirements.txt
+│   ├── requirements.txt
+│   └── mini_tms.db
 │
 ├── frontend/
 │   ├── index.html
-│   ├── loads.html
-│   ├── customers.html
-│   ├── carriers.html
-│   ├── users.html
 │   ├── api-explorer.html
-│   │
+│   ├── customers.html
+│   ├── customer-details.html
+│   ├── customer-create.html
+│   ├── carriers.html
+│   ├── carrier-details.html
+│   ├── carrier-create.html
+│   ├── users.html
+│   ├── user-details.html
+│   ├── user-create.html
+│   ├── loads.html
+│   ├── load-details.html
+│   ├── load-create.html
 │   ├── css/
-│   │   └── styles.css
-│   │
-│   └── js/
-│       ├── config.js
-│       ├── dashboard.js
-│       ├── loads.js
-│       ├── customers.js
-│       ├── carriers.js
-│       ├── users.js
-│       └── api-explorer.js
+│   ├── js/
+│   └── images/
 │
-└── venv/
-```
+└── README.md
 
----
+⸻
 
-## Running the Project
+Future Enhancements
 
-### Backend
+Planned improvements include:
 
-Activate the virtual environment:
+* JWT Authentication
+* Role-based permissions
+* PostgreSQL migration
+* Accounts Receivable module
+* Accounts Payable module
+* Invoice generation
+* Proof of Delivery (POD) uploads
+* CSV import/export
+* Reporting dashboard
+* Mock EDI integrations (204, 990, 214, 210)
+* External API integrations
 
-```bash
-source venv/bin/activate
-```
+⸻
 
-Start FastAPI:
+Purpose
 
-```bash
-cd backend
-uvicorn main:app --reload
-```
+This project was built to strengthen practical experience with:
 
-Open:
-
-```text
-http://127.0.0.1:8000/docs
-```
-
-to access Swagger documentation and test endpoints.
-
-### Frontend
-
-Open the frontend using VS Code Live Server or another static web server.
-
-Example:
-
-```text
-http://127.0.0.1:5500/frontend/index.html
-```
-
----
-
-## Future Enhancements
-
-Planned features include:
-
-* Load detail pages
-* Create/Edit/Delete functionality
-* Accounts Payable
-* Customer Invoicing
-* CSV Import Tool
-* CSV Export Tool
-* Custom Report Builder
-* Saved Reports
-* Mock EDI Integrations (204, 990, 214, 210)
-* PostgreSQL Migration
-* Authentication and User Permissions
-
----
-
-## Learning Goals
-
-This project was created to gain experience with:
-
-* SQL
-* Database relationships
-* API design
+* REST API development
 * FastAPI
+* SQL and relational databases
 * Frontend/backend integration
-* Git and GitHub
-* Logistics software architecture
-* Transportation Management Systems (TMS)
+* CRUD application architecture
+* Logistics software concepts
+* Git and GitHub workflows
+* Cloud deployment
+* Custom domains
+* API documentation
+
+Although inspired by Transportation Management Systems, the application is intentionally presented as an API Sandbox designed to demonstrate backend development, system design, and API integration concepts rather than serve as a production-ready TMS.
