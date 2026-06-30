@@ -49,7 +49,7 @@ function renderCarriers(carriers) {
             <td>${carrier[8] ?? ""}</td>
 
             <td>
-                <button
+                <button class="btn btn-danger"
                     onclick="event.stopPropagation(); deleteCarrier(${carrier[0]})"
                 >
                     Delete

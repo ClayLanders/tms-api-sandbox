@@ -48,7 +48,7 @@ function renderCustomers(customers) {
             <td>${customer[6] ?? ""}</td>
 
             <td>
-                <button
+                <button class="btn btn-danger"
                     onclick="event.stopPropagation(); deleteCustomer(${customer[0]})"
                 >
                     Delete

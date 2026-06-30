@@ -29,21 +29,28 @@ function renderLoads(loads) {
 
         row.innerHTML = `
             <td>
-    <a href="load-details.html?load=${load[1]}">
-        ${load[1]}
-    </a>
-</td>
+                <a
+                    class="load-link"
+                    href="load-details.html?load=${load[1]}"
+                >
+                     ${load[1]}
+                </a>
+            </td>
             <td>${load[2]}</td>
             <td>${load[3] ?? "-"}</td>
             <td>${load[6]}, ${load[7]}</td>
             <td>${load[10]}, ${load[11]}</td>
-            <td>${load[17]}</td>
+            <td class="status-cell">
+                <span class="status-badge status-${load[17].toLowerCase().replace(/\s+/g, "-")}">
+                    ${load[17]}
+                </span>
+            </td>
 
             <td>
-                <button
+                <button class="btn btn-danger"
                     onclick="deleteLoad('${load[1]}')"
                 >
-                    Delete
+                    Void
                 </button>
             </td>
         `;

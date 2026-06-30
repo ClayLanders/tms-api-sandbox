@@ -47,7 +47,7 @@ function renderUsers(users) {
             <td>${user[4]}</td>
 
             <td>
-                <button
+                <button class="btn btn-danger"
                     onclick="event.stopPropagation(); deleteUser(${user[0]})"
                 >
                     Delete
